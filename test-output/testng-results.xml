@@ -2,16 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-05-08T08:37:46 IST" name="Default suite" finished-at="2026-05-08T08:37:49 IST" duration-ms="2261">
+  <suite started-at="2026-07-11T18:56:29 IST" name="Default suite" finished-at="2026-07-11T18:56:33 IST" duration-ms="3383">
     <groups>
     </groups>
-    <test started-at="2026-05-08T08:37:46 IST" name="Default test" finished-at="2026-05-08T08:37:49 IST" duration-ms="2261">
-      <class name="api.tests.GetUsersTest">
-        <test-method signature="getUsersTest()[pri:0, instance:api.tests.GetUsersTest@3023df74]" started-at="2026-05-08T08:37:46 IST" name="getUsersTest" finished-at="2026-05-08T08:37:49 IST" duration-ms="2220" status="PASS">
+    <test started-at="2026-07-11T18:56:29 IST" name="Default test" finished-at="2026-07-11T18:56:33 IST" duration-ms="3383">
+      <class name="tests.LoginTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.LoginTest@682b2fa]" started-at="2026-07-11T18:56:29 IST" name="setup" finished-at="2026-07-11T18:56:30 IST" duration-ms="315" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getUsersTest -->
-      </class> <!-- api.tests.GetUsersTest -->
+        </test-method> <!-- setup -->
+        <test-method signature="verifyUserCanLoginSuccessfully()[pri:0, instance:tests.LoginTest@682b2fa]" started-at="2026-07-11T18:56:30 IST" name="verifyUserCanLoginSuccessfully" finished-at="2026-07-11T18:56:33 IST" duration-ms="3038" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserCanLoginSuccessfully -->
+      </class> <!-- tests.LoginTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
