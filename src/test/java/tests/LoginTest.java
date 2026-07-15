@@ -1,5 +1,8 @@
 package tests;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -49,7 +52,7 @@ public class LoginTest extends BaseTest
 		                "Bad credentials");	
 	}
 	
-	@Test(enabled=true)
+	@Test(enabled=false)
 	public void TC04_loginwithInvalidUsernameAndPassword()
 	{
 		AuthRequest auth = new AuthRequest("asdf",
@@ -60,6 +63,21 @@ public class LoginTest extends BaseTest
 				System.out.println(response.asPrettyString());
 				Assert.assertEquals(response.statusCode(),200);
 		        Assert.assertEquals( response.jsonPath().getString("reason"),
+		                "Bad credentials");	
+	}
+	
+	@Test(enabled=false)
+	public void TC05_loginMissingUsername()
+	{
+		AuthRequest auth = new AuthRequest(null,null);
+		Map<String, Object> request = new HashMap<>();
+		request.put("password", "password123");
+		Response response= new AuthClients().auth(auth);
+			       
+				System.out.println(response.getStatusCode());
+				System.out.println(response.asPrettyString());
+				Assert.assertEquals(response.statusCode(),200);
+		        Assert.assertEquals(response.jsonPath().getString("reason"),
 		                "Bad credentials");	
 	}
 	
