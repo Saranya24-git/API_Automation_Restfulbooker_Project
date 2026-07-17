@@ -81,4 +81,19 @@ public class LoginTest extends BaseTest
 		                "Bad credentials");	
 	}
 	
+	@Test(enabled=false)
+	public void TC06_loginMissingPassword()
+	{
+		AuthRequest auth = new AuthRequest(null,null);
+		Map<String, Object> request = new HashMap<>();
+		request.put("username", "admin");
+		Response response= new AuthClients().auth(auth);
+			       
+				System.out.println(response.getStatusCode());
+				System.out.println(response.asPrettyString());
+				Assert.assertEquals(response.statusCode(),200);
+		        Assert.assertEquals(response.jsonPath().getString("reason"),
+		                "Bad credentials");	
+	}
+	
 }
