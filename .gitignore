@@ -1,1 +1,19 @@
-/target/
+# Maven
+target/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# TestNG reports
+test-output/
+
+# Logs
+*.log
+
+# Screenshots
+screenshots/
+
+# Config files
+config.properties

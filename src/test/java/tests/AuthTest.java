@@ -11,7 +11,7 @@ import clients.AuthClients;
 import io.restassured.response.Response;
 import models.request.AuthRequest;
 
-public class LoginTest extends BaseTest
+public class AuthTest extends BaseTest
 {
 	@Test(enabled=false)
 	public void TC01_verifyUserCanLoginSuccessfully() {
@@ -94,6 +94,31 @@ public class LoginTest extends BaseTest
 				Assert.assertEquals(response.statusCode(),200);
 		        Assert.assertEquals(response.jsonPath().getString("reason"),
 		                "Bad credentials");	
+	}
+	
+	@Test
+	public void TC07_ValidateResponseHeaders()
+	{
+		AuthRequest auth = new AuthRequest("admin",
+	            "password123");
+		Response response= new AuthClients().auth(auth);
+		Assert.assertEquals(response.statusCode(), 200);
+		 // Content-Type
+        Assert.assertEquals(
+                response.getHeader("Content-Type"),
+                "application/json; charset=utf-8");
+
+        // Server
+        Assert.assertNotNull(response.getHeader("Server"));
+
+        // Date
+        Assert.assertNotNull(response.getHeader("Date"));
+
+        // Content-Length
+        Assert.assertTrue(
+                Integer.parseInt(response.getHeader("Content-Length")) > 0);
+
+        System.out.println(response.getHeaders());
 	}
 	
 }
