@@ -1,4 +1,4 @@
-# RestfulBooker - Login Module Test Cases
+# RestfulBooker - Auth Test Cases
 
 
 | Test Case ID  | Test Case Name                                 | Scenario                                              | Preconditions           | Test Steps                                                                                     | Expected Result                                                                                                                 | Priority | Test Type | Automation Status |
