@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import base.BaseTest;
 import clients.AuthClients;
+import constants.APIConstants;
 import io.restassured.response.Response;
 import models.request.AuthRequest;
 
@@ -15,9 +16,7 @@ public class AuthTest extends BaseTest
 {
 	@Test(enabled=false)
 	public void TC01_verifyUserCanLoginSuccessfully() {
-	AuthRequest auth = new AuthRequest("admin",
-            "password123");
-	
+	AuthRequest auth = new AuthRequest("admin","password123");
 	Response response= new AuthClients().auth(auth);
 		System.out.println(response.getStatusCode());
 		System.out.println(response.asPrettyString());
@@ -28,42 +27,34 @@ public class AuthTest extends BaseTest
 	@Test(enabled=false)
 	public void TC02_loginwithInvalidUsername()
 	{
-		AuthRequest auth = new AuthRequest("asdf",
-	            "password123");
-		Response response= new AuthClients().auth(auth);
-			       
-				System.out.println(response.getStatusCode());
-				System.out.println(response.asPrettyString());
-				Assert.assertEquals(response.statusCode(),200);
-		        Assert.assertEquals( response.jsonPath().getString("reason"),
-		                "Bad credentials");	
+		AuthRequest auth = new AuthRequest("asdf", "password123");
+		Response response= new AuthClients().auth(auth);			       
+		System.out.println(response.getStatusCode());
+		System.out.println(response.asPrettyString());
+		Assert.assertEquals(response.statusCode(),200);
+		Assert.assertEquals(response.jsonPath().getString("reason"), APIConstants.BAD_CREDENTIALS);	
 	}
+	
 	@Test(enabled=false)
 	public void TC03_loginwithInvalidPassword()
 	{
-		AuthRequest auth = new AuthRequest("admin",
-	            "aadsf");
+		AuthRequest auth = new AuthRequest("admin","aadsf");
 		Response response= new AuthClients().auth(auth);
-			       
-				System.out.println(response.getStatusCode());
-				System.out.println(response.asPrettyString());
-				Assert.assertEquals(response.statusCode(),200);
-		        Assert.assertEquals( response.jsonPath().getString("reason"),
-		                "Bad credentials");	
+		System.out.println(response.getStatusCode());
+		System.out.println(response.asPrettyString());
+		Assert.assertEquals(response.statusCode(),200);
+		Assert.assertEquals( response.jsonPath().getString("reason"), APIConstants.BAD_CREDENTIALS);	
 	}
 	
 	@Test(enabled=false)
 	public void TC04_loginwithInvalidUsernameAndPassword()
 	{
-		AuthRequest auth = new AuthRequest("asdf",
-	            "aadsf");
+		AuthRequest auth = new AuthRequest("asdf","aadsf");
 		Response response= new AuthClients().auth(auth);
-			       
-				System.out.println(response.getStatusCode());
-				System.out.println(response.asPrettyString());
-				Assert.assertEquals(response.statusCode(),200);
-		        Assert.assertEquals( response.jsonPath().getString("reason"),
-		                "Bad credentials");	
+		System.out.println(response.getStatusCode());
+		System.out.println(response.asPrettyString());
+		Assert.assertEquals(response.statusCode(),200);
+		Assert.assertEquals( response.jsonPath().getString("reason"),APIConstants.BAD_CREDENTIALS);	
 	}
 	
 	@Test(enabled=false)
@@ -73,12 +64,10 @@ public class AuthTest extends BaseTest
 		Map<String, Object> request = new HashMap<>();
 		request.put("password", "password123");
 		Response response= new AuthClients().auth(auth);
-			       
-				System.out.println(response.getStatusCode());
-				System.out.println(response.asPrettyString());
-				Assert.assertEquals(response.statusCode(),200);
-		        Assert.assertEquals(response.jsonPath().getString("reason"),
-		                "Bad credentials");	
+		System.out.println(response.getStatusCode());
+		System.out.println(response.asPrettyString());
+		Assert.assertEquals(response.statusCode(),200);
+		Assert.assertEquals(response.jsonPath().getString("reason"),APIConstants.BAD_CREDENTIALS);	
 	}
 	
 	@Test(enabled=false)
@@ -88,25 +77,20 @@ public class AuthTest extends BaseTest
 		Map<String, Object> request = new HashMap<>();
 		request.put("username", "admin");
 		Response response= new AuthClients().auth(auth);
-			       
-				System.out.println(response.getStatusCode());
-				System.out.println(response.asPrettyString());
-				Assert.assertEquals(response.statusCode(),200);
-		        Assert.assertEquals(response.jsonPath().getString("reason"),
-		                "Bad credentials");	
+		System.out.println(response.getStatusCode());
+		System.out.println(response.asPrettyString());
+		Assert.assertEquals(response.statusCode(),200);
+		Assert.assertEquals(response.jsonPath().getString("reason"),APIConstants.BAD_CREDENTIALS);	
 	}
 	
 	@Test
 	public void TC07_ValidateResponseHeaders()
 	{
-		AuthRequest auth = new AuthRequest("admin",
-	            "password123");
+		AuthRequest auth = new AuthRequest("admin","password123");
 		Response response= new AuthClients().auth(auth);
 		Assert.assertEquals(response.statusCode(), 200);
 		 // Content-Type
-        Assert.assertEquals(
-                response.getHeader("Content-Type"),
-                "application/json; charset=utf-8");
+        Assert.assertEquals(response.getHeader("Content-Type"),APIConstants.HEADER_CONTENT_TYPE_JSON);
 
         // Server
         Assert.assertNotNull(response.getHeader("Server"));

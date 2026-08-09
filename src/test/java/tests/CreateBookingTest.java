@@ -1,13 +1,11 @@
 package tests;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
 import clients.BookingClient;
+import constants.APIConstants;
 import io.restassured.response.Response;
 import models.request.BookingDates;
 import models.request.BookingRequest;
@@ -23,7 +21,7 @@ public class CreateBookingTest extends BaseTest
 		BookingClient bookingClient = new BookingClient();
 		Response response = bookingClient.createBooking(request);
 		System.out.println(response.asPrettyString());
-	    Assert.assertEquals(response.statusCode(),200);    	
+	    Assert.assertEquals(response.statusCode(),APIConstants.STATUS_CODE_OK);    	
 	}
 	
 	@Test(enabled=false)
@@ -35,7 +33,7 @@ public class CreateBookingTest extends BaseTest
 		Response response = bookingClient.createBooking(request);
 		BookingResponse bookingResponse = response.as(BookingResponse.class);
 		System.out.println(response.asPrettyString());
-		Assert.assertTrue(bookingResponse.getBookingid() > 0, "Booking ID should be greater than 0");		
+		Assert.assertTrue(bookingResponse.getBookingid() > 0, APIConstants.BOOKING_ID_SHOULD_BE_GREATER_THAN_ZERO);		
 	}
 	
 	@Test(enabled=false)
@@ -64,7 +62,7 @@ public class CreateBookingTest extends BaseTest
 		BookingClient bookingClient = new BookingClient();
 		Response response = bookingClient.createBooking(request);
 		System.out.println(response.getHeaders());
-		Assert.assertEquals(response.getHeader("Content-Type"),"application/json; charset=utf-8");
+		Assert.assertEquals(response.getHeader("Content-Type"),APIConstants.HEADER_CONTENT_TYPE_JSON);
 		Assert.assertNotNull(response.getHeader("Server"));
 		Assert.assertNotNull(response.getHeader("Date"));
 		Assert.assertNotNull(response.getHeader("Content-Length"));
@@ -102,8 +100,8 @@ public class CreateBookingTest extends BaseTest
 		 * However, Restful Booker returned a 500 Internal Server Error with a text/plain response. 
 		 * My test validates the actual API behavior while documenting it as a server-side issue."*/
 		Assert.assertEquals(response.statusCode(), 500);
-		Assert.assertEquals(response.getContentType(),"text/plain; charset=utf-8");
-		Assert.assertEquals(response.asString(),"Internal Server Error");
+		Assert.assertEquals(response.getContentType(),APIConstants.HEADER_CONTENT_TYPE_PLAIN);
+		Assert.assertEquals(response.asString(),APIConstants.INTERNAL_SERVER_ERROR);
 	}
 	
 	@Test(enabled=false)
@@ -140,8 +138,8 @@ public class CreateBookingTest extends BaseTest
 		 * However, Restful Booker returned a 500 Internal Server Error with a text/plain response. 
 		 * My test validates the actual API behavior while documenting it as a server-side issue."*/
 		Assert.assertEquals(response.statusCode(), 500);
-		Assert.assertEquals(response.getContentType(),"text/plain; charset=utf-8");
-		Assert.assertEquals(response.asString(),"Internal Server Error");
+		Assert.assertEquals(response.getContentType(),APIConstants.HEADER_CONTENT_TYPE_PLAIN);
+		Assert.assertEquals(response.asString(),APIConstants.INTERNAL_SERVER_ERROR);
 	}
 	
 	@Test(enabled=false)
@@ -180,8 +178,8 @@ public class CreateBookingTest extends BaseTest
 		 * However, Restful Booker returned a 500 Internal Server Error with a text/plain response. 
 		 * My test validates the actual API behavior while documenting it as a server-side issue."*/
 		Assert.assertEquals(response.statusCode(), 500);
-		Assert.assertEquals(response.getContentType(),"text/plain; charset=utf-8");
-		Assert.assertEquals(response.asString(),"Internal Server Error");
+		Assert.assertEquals(response.getContentType(),APIConstants.HEADER_CONTENT_TYPE_PLAIN);
+		Assert.assertEquals(response.asString(),APIConstants.INTERNAL_SERVER_ERROR);
 	}
 	
 	@Test(enabled=false)
@@ -193,8 +191,8 @@ public class CreateBookingTest extends BaseTest
 	    System.out.println(response.getContentType());
 	    System.out.println(response.asString());
 		Assert.assertEquals(response.statusCode(), 500);
-		Assert.assertEquals(response.getContentType(), "text/plain; charset=utf-8");
-		Assert.assertEquals(response.asString(), "Internal Server Error");	
+		Assert.assertEquals(response.getContentType(), APIConstants.HEADER_CONTENT_TYPE_PLAIN);
+		Assert.assertEquals(response.asString(), APIConstants.INTERNAL_SERVER_ERROR);	
 	}
 	@Test(enabled=false)
 	public void TC19_CreateBookingWithBlankRequestBody()
@@ -205,8 +203,8 @@ public class CreateBookingTest extends BaseTest
 	    System.out.println(response.getContentType());
 	    System.out.println(response.asString());
 		Assert.assertEquals(response.statusCode(), 500);
-		Assert.assertEquals(response.getContentType(), "text/plain; charset=utf-8");
-		Assert.assertEquals(response.asString(), "Internal Server Error");	
+		Assert.assertEquals(response.getContentType(), APIConstants.HEADER_CONTENT_TYPE_PLAIN);
+		Assert.assertEquals(response.asString(), APIConstants.INTERNAL_SERVER_ERROR);	
 	}
 	
 	@Test(enabled=false)
@@ -263,8 +261,8 @@ public class CreateBookingTest extends BaseTest
 	    System.out.println(response.getContentType());
 	    System.out.println(response.asPrettyString());
 	    Assert.assertEquals(response.statusCode(), 400);
-	    Assert.assertEquals(response.getContentType(), "text/plain; charset=utf-8");
-	    Assert.assertEquals(response.asString(), "Bad Request");
+	    Assert.assertEquals(response.getContentType(), APIConstants.HEADER_CONTENT_TYPE_PLAIN);
+	    Assert.assertEquals(response.asString(), APIConstants.BAD_REQUEST);
 	    
 	}
 }
