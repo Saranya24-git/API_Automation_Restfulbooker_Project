@@ -1,14 +1,12 @@
 package models.response;
 
-import models.request.BookingDates;
-
 public class GetBookingResponse
 {
 	private String firstname;
 	private String lastname;
 	private Integer totalprice;
 	private Boolean depositpaid;
-	private BookingDates bookingdates;
+	private BookingDatesResponse bookingdates;
 	private String additionalneeds;
 	
 	public String getFirstname() {
@@ -35,10 +33,10 @@ public class GetBookingResponse
 	public void setDepositpaid(Boolean depositpaid) {
 		this.depositpaid = depositpaid;
 	}
-	public BookingDates getBookingdates() {
+	public BookingDatesResponse getBookingdates() {
 		return bookingdates;
 	}
-	public void setBookingdates(BookingDates bookingdates) {
+	public void setBookingdates(BookingDatesResponse bookingdates) {
 		this.bookingdates = bookingdates;
 	}
 	public String getAdditionalneeds() {

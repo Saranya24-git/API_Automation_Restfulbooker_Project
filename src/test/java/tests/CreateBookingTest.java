@@ -1,34 +1,42 @@
 package tests;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import annotations.TestDataSheet;
 import base.BaseTest;
 import clients.BookingClient;
 import constants.APIConstants;
+import dataProviders.TestDataProvider;
+import datamodels.CreateBookingData;
 import io.restassured.response.Response;
 import models.request.BookingDates;
 import models.request.BookingRequest;
 import models.response.BookingResponse;
 
+@TestDataSheet(sheetName = "CreateBooking",  model=CreateBookingData.class)
+
 public class CreateBookingTest extends BaseTest
 {
-	@Test(enabled=false)
-	public void TC08_CreateBooking()
+	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	public void TC08_CreateBooking(CreateBookingData data)
 	{
-		BookingDates bookingDates = new BookingDates("2026-08-01","2026-08-10");
-		BookingRequest request = new BookingRequest("Saranya", "K",2500,true,bookingDates,"Breakfast");
+		BookingDates bookingDates = new BookingDates(data.getCheckin(),data.getCheckout());
+		BookingRequest request = new BookingRequest(data.getFirstname(), data.getLastname(),data.getTotalprice(),data.isDepositpaid(),bookingDates,data.getAdditionalneeds());
 		BookingClient bookingClient = new BookingClient();
 		Response response = bookingClient.createBooking(request);
 		System.out.println(response.asPrettyString());
 	    Assert.assertEquals(response.statusCode(),APIConstants.STATUS_CODE_OK);    	
 	}
 	
-	@Test(enabled=false)
-	public void TC09_VerifyBookingIDGenerated()
+	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	public void TC09_VerifyBookingIDGenerated(CreateBookingData data)
 	{
-		BookingDates bookingDates = new BookingDates("2026-08-01" , "2026-08-10");
-		BookingRequest request = new BookingRequest("Saranya", "K",2500,true,bookingDates,"Breakfast");
+		BookingDates bookingDates = new BookingDates(data.getCheckin(),data.getCheckout());
+		BookingRequest request = new BookingRequest(data.getFirstname(), data.getLastname(),data.getTotalprice(),data.isDepositpaid(),bookingDates,data.getAdditionalneeds());
 		BookingClient bookingClient = new BookingClient();
 		Response response = bookingClient.createBooking(request);
 		BookingResponse bookingResponse = response.as(BookingResponse.class);
@@ -36,29 +44,29 @@ public class CreateBookingTest extends BaseTest
 		Assert.assertTrue(bookingResponse.getBookingid() > 0, APIConstants.BOOKING_ID_SHOULD_BE_GREATER_THAN_ZERO);		
 	}
 	
-	@Test(enabled=false)
-	public void TC10_VerifyResponseBody()
+	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	public void TC10_VerifyResponseBody(CreateBookingData data)
 	{
-		BookingDates bookingDates = new BookingDates("2026-08-01", "2026-08-10");
-		BookingRequest request = new BookingRequest("Saranya", "K",2500,true,bookingDates,"Breakfast");
+		BookingDates bookingDates = new BookingDates(data.getCheckin(),data.getCheckout());
+		BookingRequest request = new BookingRequest(data.getFirstname(), data.getLastname(),data.getTotalprice(),data.isDepositpaid(),bookingDates,data.getAdditionalneeds());
 		BookingClient bookingClient = new BookingClient();
 		Response response = bookingClient.createBooking(request);
 		BookingResponse bookingResponse = response.as(BookingResponse.class);
 		System.out.println(response.asPrettyString());
-		Assert.assertEquals(bookingResponse.getBooking().getfirstname(),"Saranya");
+		Assert.assertEquals(bookingResponse.getBooking().getFirstname(),"Saranya");
 		Assert.assertEquals(bookingResponse.getBooking().getLastname(),"K");
 		Assert.assertEquals(bookingResponse.getBooking().getTotalprice(),2500);
-		Assert.assertEquals(bookingResponse.getBooking().isDepositpaid(),true);
-		Assert.assertEquals(bookingResponse.getBooking().getBookingdates().getCheckin(),bookingDates.getCheckin());
-		Assert.assertEquals(bookingResponse.getBooking().getBookingdates().getCheckout(),bookingDates.getCheckout());
+		Assert.assertEquals(bookingResponse.getBooking().getDepositpaid(),true);
+		Assert.assertEquals(bookingResponse.getBooking().getBookingdates().getCheckin(),bookingDates.getCheckin().toString());
+		Assert.assertEquals(bookingResponse.getBooking().getBookingdates().getCheckout(),bookingDates.getCheckout().toString());
 		Assert.assertEquals(bookingResponse.getBooking().getAdditionalneeds(),"Breakfast");		
 	}
 	
-	@Test(enabled=false)
-	public void TC11_VerifyResponseHeaders()
+	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	public void TC11_VerifyResponseHeaders(CreateBookingData data)
 	{
-		BookingDates bookingDates = new BookingDates("2026-08-01", "2026-08-10");
-		BookingRequest request = new BookingRequest("Saranya", "K",2500,true,bookingDates,"Breakfast");
+		BookingDates bookingDates = new BookingDates(data.getCheckin(),data.getCheckout());
+		BookingRequest request = new BookingRequest(data.getFirstname(), data.getLastname(),data.getTotalprice(),data.isDepositpaid(),bookingDates,data.getAdditionalneeds());
 		BookingClient bookingClient = new BookingClient();
 		Response response = bookingClient.createBooking(request);
 		System.out.println(response.getHeaders());
@@ -68,20 +76,20 @@ public class CreateBookingTest extends BaseTest
 		Assert.assertNotNull(response.getHeader("Content-Length"));
 	}
 	
-	@Test(enabled=false)
-	public void TC12_CreateBookingWithEmptyFirstName()
+	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	public void TC12_CreateBookingWithEmptyFirstName(CreateBookingData data)
 	{
-		BookingDates bookingDates = new BookingDates("2026-08-01", "2026-08-10");
-		BookingRequest request = new BookingRequest("", "K",2500,true,bookingDates,"Breakfast");
+		BookingDates bookingDates = new BookingDates(data.getCheckin(),data.getCheckout());
+		BookingRequest request = new BookingRequest(data.getFirstname(), data.getLastname(),data.getTotalprice(),data.isDepositpaid(),bookingDates,data.getAdditionalneeds());
 		BookingClient bookingClient = new BookingClient();
 		Response response = bookingClient.createBooking(request);
 		BookingResponse bookingResponse = response.as(BookingResponse.class);
 		System.out.println(response.asPrettyString());
 		Assert.assertEquals(response.statusCode(), 200);
-		Assert.assertEquals(bookingResponse.getBooking().getfirstname(), "");		
+		Assert.assertEquals(bookingResponse.getBooking().getFirstname(), "");		
 	}
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void TC13_CreateBookingWithoutFirstName_ShouldReturnServerError()
 	{
 		BookingDates bookingDates = new BookingDates("2026-08-01", "2026-08-10");
@@ -104,11 +112,11 @@ public class CreateBookingTest extends BaseTest
 		Assert.assertEquals(response.asString(),APIConstants.INTERNAL_SERVER_ERROR);
 	}
 	
-	@Test(enabled=false)
-	public void TC14_CreateBookingWithEmptyLastName()
+	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	public void TC14_CreateBookingWithEmptyLastName(CreateBookingData data)
 	{
-		BookingDates bookingDates = new BookingDates("2026-08-01", "2026-08-10");
-		BookingRequest request = new BookingRequest("Saranya", "",2500,true,bookingDates,"Breakfast");
+		BookingDates bookingDates = new BookingDates(data.getCheckin(),data.getCheckout());
+		BookingRequest request = new BookingRequest(data.getFirstname(), data.getLastname(),data.getTotalprice(),data.isDepositpaid(),bookingDates,data.getAdditionalneeds());
 		BookingClient bookingClient = new BookingClient();
 		Response response = bookingClient.createBooking(request);
 		BookingResponse bookingResponse = response.as(BookingResponse.class);
@@ -119,7 +127,7 @@ public class CreateBookingTest extends BaseTest
 		
 	}
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void TC15_CreateBookingWithoutLastName_ShouldReturnServerError()
 	{
 		BookingDates bookingDates = new BookingDates("2026-08-01", "2026-08-10");
@@ -142,11 +150,19 @@ public class CreateBookingTest extends BaseTest
 		Assert.assertEquals(response.asString(),APIConstants.INTERNAL_SERVER_ERROR);
 	}
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void TC16_CreateBookingWithEmptyBookingDates()
 	{
-		BookingDates bookingDates = new BookingDates("", "");
-		BookingRequest request = new BookingRequest("Saranya", "K",2500,true,bookingDates,"Breakfast");
+		Map<String, Object> bookingDates = new HashMap<>();
+	    bookingDates.put("checkin", "");
+	    bookingDates.put("checkout", "");
+	    Map<String, Object> request = new HashMap<>();
+	    request.put("firstname", "Saranya");
+	    request.put("lastname", "K");
+	    request.put("totalprice", 2500);
+	    request.put("depositpaid", true);
+	    request.put("bookingdates", bookingDates);
+	    request.put("additionalneeds", "Breakfast");
 		BookingClient bookingClient = new BookingClient();
 		Response response = bookingClient.createBooking(request);
 		BookingResponse bookingResponse = response.as(BookingResponse.class);
@@ -160,7 +176,7 @@ public class CreateBookingTest extends BaseTest
 		Assert.assertEquals(bookingResponse.getBooking().getBookingdates().getCheckout(), "0NaN-aN-aN");		
 	}
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void TC17_CreateBookingWithoutBookingDates_ShouldReturnServerError()
 	{
 		BookingRequest request = new BookingRequest();
@@ -182,7 +198,7 @@ public class CreateBookingTest extends BaseTest
 		Assert.assertEquals(response.asString(),APIConstants.INTERNAL_SERVER_ERROR);
 	}
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void TC18_CreateBookingWithEmptyRequestBody()
 	{
 		BookingClient bookingClient = new BookingClient();
@@ -194,7 +210,7 @@ public class CreateBookingTest extends BaseTest
 		Assert.assertEquals(response.getContentType(), APIConstants.HEADER_CONTENT_TYPE_PLAIN);
 		Assert.assertEquals(response.asString(), APIConstants.INTERNAL_SERVER_ERROR);	
 	}
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void TC19_CreateBookingWithBlankRequestBody()
 	{
 		BookingClient bookingClient = new BookingClient();
@@ -207,7 +223,7 @@ public class CreateBookingTest extends BaseTest
 		Assert.assertEquals(response.asString(), APIConstants.INTERNAL_SERVER_ERROR);	
 	}
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void TC20_CreateBookingWithInvalidDataTypes()
 	{
 		String requestBody =
@@ -237,7 +253,7 @@ public class CreateBookingTest extends BaseTest
 	    Assert.assertEquals(response.statusCode(), 200);
 	    Assert.assertTrue(bookingResponse.getBookingid() > 0);
 	    Assert.assertNull(bookingResponse.getBooking().getTotalprice());
-	    Assert.assertTrue(bookingResponse.getBooking().isDepositpaid());	  
+	    Assert.assertTrue(bookingResponse.getBooking().getDepositpaid());	  
 	}
 	
 	@Test(enabled=true)

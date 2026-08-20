@@ -1,6 +1,9 @@
 package clients;
 
 import static io.restassured.RestAssured.given;
+
+import java.util.Map;
+
 import endpoints.BookingEndPoint;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -13,9 +16,19 @@ public class BookingClient
 		return given()
 				.contentType(ContentType.JSON)
 				.body(bookingRequest)
+				.log().body()
 			.when()
 				.post(BookingEndPoint.CREATE_BOOKING);
 		
+	}
+	
+	public Response createBooking(Map<String, Object> request)
+	{
+	    return given()
+	            .contentType(ContentType.JSON)
+	            .body(request)
+	        .when()
+	            .post(BookingEndPoint.CREATE_BOOKING);
 	}
 	
 	public Response createBookingWithEmptyBody() {

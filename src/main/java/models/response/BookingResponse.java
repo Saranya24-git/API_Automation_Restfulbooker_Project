@@ -1,28 +1,30 @@
 package models.response;
 
-import models.request.BookingRequest;
-
 public class BookingResponse
 {
 	private int bookingid;
-    private BookingRequest booking;
-
-    public BookingResponse() {
+	private BookingDataResponse booking;
+	
+	public BookingResponse() {
     }
-
-    public int getBookingid() {
+	
+	public int getBookingid() {
         return bookingid;
     }
 
     public void setBookingid(int bookingid) {
         this.bookingid = bookingid;
     }
+	
+    public BookingDataResponse getBooking() {
+		return booking;
+	}
 
-    public BookingRequest getBooking() {
-        return booking;
-    }
+	public void setBooking(BookingDataResponse booking) {
+		this.booking = booking;
+	}	
 
-    public void setBooking(BookingRequest booking) {
-        this.booking = booking;
-    }
+    
+
+	   
 }

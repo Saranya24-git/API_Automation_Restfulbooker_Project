@@ -14,7 +14,7 @@ public class BookingRequest
 		
 	}
 	
-	public BookingRequest(String firstname, String lastname,int totalprice,boolean depositpaid,BookingDates bookingdates,String additionalneeds)
+	public BookingRequest(String firstname, String lastname,Integer totalprice,Boolean depositpaid,BookingDates bookingdates,String additionalneeds)
 	{
 		this.firstname=firstname;
         this.lastname=lastname;
