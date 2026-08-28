@@ -1,13 +1,12 @@
 package base;
 
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import io.restassured.RestAssured;
+import utils.ConfigReader;
 
 public class BaseTest
 {
@@ -23,6 +22,6 @@ public class BaseTest
         objectMapper.disable(
                 SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         
-		RestAssured.baseURI="https://restful-booker.herokuapp.com";
+		RestAssured.baseURI=ConfigReader.get("baseUri");
 	}
 }
