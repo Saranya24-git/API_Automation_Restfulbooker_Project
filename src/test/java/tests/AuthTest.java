@@ -7,7 +7,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import annotations.TestDataSheet;
-import base.BaseTest;
 import clients.AuthClients;
 import constants.APIConstants;
 import dataProviders.TestDataProvider;
@@ -17,7 +16,7 @@ import models.request.AuthRequest;
 
 @TestDataSheet(sheetName = "Auth",  model=AuthData.class)
 
-public class AuthTest extends BaseTest
+public class AuthTest 
 {
 	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
 	public void TC01_verifyUserCanLoginSuccessfully(AuthData data) {

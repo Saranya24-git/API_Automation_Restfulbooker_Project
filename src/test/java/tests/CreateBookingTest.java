@@ -7,7 +7,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import annotations.TestDataSheet;
-import base.BaseTest;
 import clients.BookingClient;
 import constants.APIConstants;
 import dataProviders.TestDataProvider;
@@ -19,7 +18,7 @@ import models.response.BookingResponse;
 
 @TestDataSheet(sheetName = "CreateBooking",  model=CreateBookingData.class)
 
-public class CreateBookingTest extends BaseTest
+public class CreateBookingTest 
 {
 	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
 	public void TC08_CreateBooking(CreateBookingData data)

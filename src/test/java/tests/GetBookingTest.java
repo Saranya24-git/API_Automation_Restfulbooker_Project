@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import annotations.TestDataSheet;
-import base.BaseTest;
 import clients.GetBookingClient;
 import constants.APIConstants;
 import dataProviders.TestDataProvider;
@@ -15,7 +14,7 @@ import models.response.GetBookingResponse;
 
 @TestDataSheet(sheetName="GetBooking", model=GetBookingData.class)
 
-public class GetBookingTest extends BaseTest
+public class GetBookingTest 
 {
 	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
 	public void TC22_GetExistingBookingWithValidID(GetBookingData data)
