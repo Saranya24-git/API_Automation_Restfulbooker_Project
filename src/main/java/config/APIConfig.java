@@ -1,5 +1,9 @@
 package config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.HttpClientConfig;
@@ -8,9 +12,17 @@ import io.restassured.specification.RequestSpecification;
 import utils.ConfigReader;
 
 public class APIConfig {
+	
+    public static RequestSpecification getRequestSpec() {    	
+    	
+    	ObjectMapper objectMapper = new ObjectMapper();
+    	
+    	objectMapper = new ObjectMapper();
 
-    public static RequestSpecification getRequestSpec() {
+        objectMapper.registerModule(new JavaTimeModule());
 
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);	
+    	
         int connectionTimeout =
                 Integer.parseInt(
                         ConfigReader.get("connectionTimeout"));
