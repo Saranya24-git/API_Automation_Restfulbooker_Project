@@ -2,6 +2,9 @@ package clients;
 
 import static io.restassured.RestAssured.given;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import config.APIConfig;
 import endpoints.UpdateBookingEndPoint;
 import io.restassured.response.Response;
@@ -11,12 +14,19 @@ import models.request.UpdateBookingRequest;
 public class UpdateBookingClient
 {
 	private RequestSpecification requestSpec;
+	
+	private static final Logger logger =
+	        LogManager.getLogger(UpdateBookingClient.class);
 	 
 	public UpdateBookingClient() {
 		requestSpec = APIConfig.getRequestSpec();
 	}
 	public Response updateBooking(String bookingId, String token, UpdateBookingRequest request)
 	{
+		 logger.info(
+		            "Updating booking ID: {}",
+		            bookingId);
+
 		 return given()
 				.spec(requestSpec)
 				.cookie("token", token)
@@ -28,6 +38,10 @@ public class UpdateBookingClient
 	}
 	public Response updateBooking(String bookingId, UpdateBookingRequest request)
 	{
+		 logger.info(
+		            "Updating booking ID: {}",
+		            bookingId);
+
 		 return given()
 				.spec(requestSpec)
 				.pathParam("id", bookingId)

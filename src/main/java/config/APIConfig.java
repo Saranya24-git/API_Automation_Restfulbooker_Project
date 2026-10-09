@@ -1,5 +1,8 @@
 package config;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -12,9 +15,14 @@ import io.restassured.specification.RequestSpecification;
 import utils.ConfigReader;
 
 public class APIConfig {
+	private static final Logger logger =
+	        LogManager.getLogger(APIConfig.class);
 	
     public static RequestSpecification getRequestSpec() {    	
     	
+    	  logger.info(
+    	            "Creating JSON ObjectMapper");
+    	  
     	ObjectMapper objectMapper = new ObjectMapper();
     	
     	objectMapper = new ObjectMapper();

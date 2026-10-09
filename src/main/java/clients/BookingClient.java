@@ -4,6 +4,9 @@ import static io.restassured.RestAssured.given;
 
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import config.APIConfig;
 import endpoints.BookingEndPoint;
 import io.restassured.response.Response;
@@ -13,6 +16,8 @@ import models.request.BookingRequest;
 public class BookingClient
 {
 	  private RequestSpecification requestSpec;
+	  private static final Logger logger =
+		        LogManager.getLogger(BookingClient.class);
 	  
 	public BookingClient() {
 		requestSpec = APIConfig.getRequestSpec();
@@ -20,6 +25,8 @@ public class BookingClient
 	
 	public Response createBooking(BookingRequest bookingRequest)
 	{
+		 logger.info(
+		            "Sending POST /booking request");
 		return given()
 				.spec(requestSpec)
 				.body(bookingRequest)

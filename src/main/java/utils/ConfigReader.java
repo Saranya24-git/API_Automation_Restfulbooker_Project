@@ -6,6 +6,7 @@ import java.util.Properties;
 
 public class ConfigReader {
 
+	//ThreadLocal only when something such as a token must be shared among methods running on the same thread.
     private static final Properties properties = new Properties();
 
     static {
