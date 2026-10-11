@@ -9,11 +9,14 @@ target/
 # TestNG reports
 test-output/
 
-# Logs
-*.log
-
 # Screenshots
 screenshots/
 
 # Config files
 config.properties
+
+# ExtentReports generated files
+reports/
+
+# Generated logs
+logs/
