@@ -18,7 +18,7 @@ import models.request.AuthRequest;
 
 public class AuthTest 
 {
-	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"smoke", "regression"})
 	public void TC01_verifyUserCanLoginSuccessfully(AuthData data) {
 	AuthRequest auth = new AuthRequest(data.getUsername(),data.getPassword());
 	Response response= new AuthClients().auth(auth);
@@ -28,7 +28,7 @@ public class AuthTest
         Assert.assertNotNull(response.jsonPath().getString("token"));	       
 	}
 	
-	@Test(enabled=false, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class,groups = {"regression"})
 	public void TC02_loginwithInvalidUsername(AuthData data)
 	{
 		AuthRequest auth = new AuthRequest(data.getUsername(), data.getPassword());
@@ -39,7 +39,7 @@ public class AuthTest
 		Assert.assertEquals(response.jsonPath().getString("reason"), APIConstants.BAD_CREDENTIALS);	
 	}
 	
-	@Test(enabled=false, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class,groups = {"regression"})
 	public void TC03_loginwithInvalidPassword(AuthData data)
 	{
 		AuthRequest auth = new AuthRequest(data.getUsername(),data.getPassword());
@@ -50,7 +50,7 @@ public class AuthTest
 		Assert.assertEquals( response.jsonPath().getString("reason"), APIConstants.BAD_CREDENTIALS);	
 	}
 	
-	@Test(enabled=false, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class,groups = {"regression"})
 	public void TC04_loginwithInvalidUsernameAndPassword(AuthData data)
 	{
 		AuthRequest auth = new AuthRequest(data.getUsername(),data.getPassword());
@@ -61,7 +61,7 @@ public class AuthTest
 		Assert.assertEquals( response.jsonPath().getString("reason"),APIConstants.BAD_CREDENTIALS);	
 	}
 	
-	@Test(enabled=false)
+	@Test(groups = {"regression"})
 	public void TC05_loginMissingUsername()
 	{
 		AuthRequest auth = new AuthRequest(null,null);
@@ -74,7 +74,7 @@ public class AuthTest
 		Assert.assertEquals(response.jsonPath().getString("reason"),APIConstants.BAD_CREDENTIALS);	
 	}
 	
-	@Test(enabled=false)
+	@Test(groups = {"regression"})
 	public void TC06_loginMissingPassword()
 	{
 		AuthRequest auth = new AuthRequest(null,null);
@@ -87,7 +87,7 @@ public class AuthTest
 		Assert.assertEquals(response.jsonPath().getString("reason"),APIConstants.BAD_CREDENTIALS);	
 	}
 	
-	@Test(enabled=false, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class,groups = {"smoke","regression"})
 	public void TC07_ValidateResponseHeaders(AuthData data)
 	{
 		AuthRequest auth = new AuthRequest(data.getUsername(),data.getPassword());

@@ -20,7 +20,7 @@ import models.response.BookingResponse;
 
 public class CreateBookingTest 
 {
-	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"smoke", "regression"})
 	public void TC08_CreateBooking(CreateBookingData data)
 	{
 		BookingDates bookingDates = new BookingDates(data.getCheckin(),data.getCheckout());
@@ -31,7 +31,7 @@ public class CreateBookingTest
 	    Assert.assertEquals(response.statusCode(),APIConstants.STATUS_CODE_OK);    	
 	}
 	
-	@Test(enabled=false, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
 	public void TC09_VerifyBookingIDGenerated(CreateBookingData data)
 	{
 		BookingDates bookingDates = new BookingDates(data.getCheckin(),data.getCheckout());
@@ -43,7 +43,7 @@ public class CreateBookingTest
 		Assert.assertTrue(bookingResponse.getBookingid() > 0, APIConstants.BOOKING_ID_SHOULD_BE_GREATER_THAN_ZERO);		
 	}
 	
-	@Test(enabled=false, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"smoke", "regression"})
 	public void TC10_VerifyResponseBody(CreateBookingData data)
 	{
 		BookingDates bookingDates = new BookingDates(data.getCheckin(),data.getCheckout());
@@ -61,7 +61,7 @@ public class CreateBookingTest
 		Assert.assertEquals(bookingResponse.getBooking().getAdditionalneeds(),"Breakfast");		
 	}
 	
-	@Test(enabled=false, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"smoke", "regression"})
 	public void TC11_VerifyResponseHeaders(CreateBookingData data)
 	{
 		BookingDates bookingDates = new BookingDates(data.getCheckin(),data.getCheckout());
@@ -75,7 +75,7 @@ public class CreateBookingTest
 		Assert.assertNotNull(response.getHeader("Content-Length"));
 	}
 	
-	@Test(enabled=false, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"regression"})
 	public void TC12_CreateBookingWithEmptyFirstName(CreateBookingData data)
 	{
 		BookingDates bookingDates = new BookingDates(data.getCheckin(),data.getCheckout());
@@ -88,7 +88,7 @@ public class CreateBookingTest
 		Assert.assertEquals(bookingResponse.getBooking().getFirstname(), "");		
 	}
 	
-	@Test(enabled=false)
+	@Test(groups = {"regression"})
 	public void TC13_CreateBookingWithoutFirstName_ShouldReturnServerError()
 	{
 		BookingDates bookingDates = new BookingDates("2026-08-01", "2026-08-10");
@@ -111,7 +111,7 @@ public class CreateBookingTest
 		Assert.assertEquals(response.asString(),APIConstants.INTERNAL_SERVER_ERROR);
 	}
 	
-	@Test(enabled=false, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"regression"})
 	public void TC14_CreateBookingWithEmptyLastName(CreateBookingData data)
 	{
 		BookingDates bookingDates = new BookingDates(data.getCheckin(),data.getCheckout());
@@ -126,7 +126,7 @@ public class CreateBookingTest
 		
 	}
 	
-	@Test(enabled=false)
+	@Test(groups = {"regression"})
 	public void TC15_CreateBookingWithoutLastName_ShouldReturnServerError()
 	{
 		BookingDates bookingDates = new BookingDates("2026-08-01", "2026-08-10");
@@ -149,7 +149,7 @@ public class CreateBookingTest
 		Assert.assertEquals(response.asString(),APIConstants.INTERNAL_SERVER_ERROR);
 	}
 	
-	@Test(enabled=false)
+	@Test(groups = {"regression"})
 	public void TC16_CreateBookingWithEmptyBookingDates()
 	{
 		Map<String, Object> bookingDates = new HashMap<>();
@@ -175,7 +175,7 @@ public class CreateBookingTest
 		Assert.assertEquals(bookingResponse.getBooking().getBookingdates().getCheckout(), "0NaN-aN-aN");		
 	}
 	
-	@Test(enabled=false)
+	@Test(groups = {"regression"})
 	public void TC17_CreateBookingWithoutBookingDates_ShouldReturnServerError()
 	{
 		BookingRequest request = new BookingRequest();
@@ -197,7 +197,7 @@ public class CreateBookingTest
 		Assert.assertEquals(response.asString(),APIConstants.INTERNAL_SERVER_ERROR);
 	}
 	
-	@Test(enabled=false)
+	@Test(groups = {"Smoke", "regression"})
 	public void TC18_CreateBookingWithEmptyRequestBody()
 	{
 		BookingClient bookingClient = new BookingClient();
@@ -209,7 +209,7 @@ public class CreateBookingTest
 		Assert.assertEquals(response.getContentType(), APIConstants.HEADER_CONTENT_TYPE_PLAIN);
 		Assert.assertEquals(response.asString(), APIConstants.INTERNAL_SERVER_ERROR);	
 	}
-	@Test(enabled=false)
+	@Test(groups = {"smoke", "regression"})
 	public void TC19_CreateBookingWithBlankRequestBody()
 	{
 		BookingClient bookingClient = new BookingClient();
@@ -222,7 +222,7 @@ public class CreateBookingTest
 		Assert.assertEquals(response.asString(), APIConstants.INTERNAL_SERVER_ERROR);	
 	}
 	
-	@Test(enabled=false)
+	@Test(groups = {"regression"})
 	public void TC20_CreateBookingWithInvalidDataTypes()
 	{
 		String requestBody =
@@ -255,7 +255,7 @@ public class CreateBookingTest
 	    Assert.assertTrue(bookingResponse.getBooking().getDepositpaid());	  
 	}
 	
-	@Test(enabled=false)
+	@Test(groups = {"regression"})
 	public void TC21_CreateBookingWithMalformedJSON()
 	{
 		String malformedJson =

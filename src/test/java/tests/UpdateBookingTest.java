@@ -23,7 +23,7 @@ import utils.ConfigReader;
 @TestDataSheet(sheetName="UpdateBooking", model=UpdateBookingData.class)
 public class UpdateBookingTest 
 {
-	@Test(enabled=false, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"smoke", "regression"})
 	public void TC25_UpdateBookingWithValidData(UpdateBookingData data)
 	{
 		/*	For a valid update:
@@ -79,7 +79,7 @@ public class UpdateBookingTest
 	    Assert.assertEquals(updatedBooking.getAdditionalneeds(),data.getAdditionalneeds());
 	}
 	
-	@Test(enabled=false, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"regression"})
 	public void TC26_UpdateBookingWithInValidToken(UpdateBookingData data)
 	{
 		/*
@@ -122,7 +122,7 @@ public class UpdateBookingTest
 	    
 	}
 	
-	@Test(enabled=false, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"regression"})
 	public void TC27_UpdateBookingWithoutToken(UpdateBookingData data)
 	{
 		 // 1. Create a valid request for the update
@@ -154,7 +154,7 @@ public class UpdateBookingTest
 	    Assert.assertEquals(updateResponse.statusCode(), 403,"Expected authentication failure for without token request");
 	}
 	
-	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"regression"})
 	public void TC28_UpdateBookingWithInValidBookingID(UpdateBookingData data)
 	{
 				// 1. Authenticate

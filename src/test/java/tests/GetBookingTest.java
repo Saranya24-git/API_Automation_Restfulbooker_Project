@@ -16,7 +16,7 @@ import models.response.GetBookingResponse;
 
 public class GetBookingTest 
 {
-	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"smoke","regression"})
 	public void TC22_GetExistingBookingWithValidID(GetBookingData data)
 	{
 		GetBookingRequest request = new GetBookingRequest(data.getBookingID());
@@ -34,7 +34,7 @@ public class GetBookingTest
 		Assert.assertNotNull(bookingResponse.getBookingdates());
 	}
 	
-	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"regression"})
 	public void TC23_GetExistingBookingWithInvalidID(GetBookingData data)
 	{
 		GetBookingRequest request = new GetBookingRequest(data.getBookingID());
@@ -45,7 +45,7 @@ public class GetBookingTest
 		Assert.assertEquals(response.asString(), APIConstants.NOT_FOUND);		
 	}
 	
-	@Test(enabled=true, dataProvider = "TestData", dataProviderClass = TestDataProvider.class)
+	@Test(dataProvider = "TestData", dataProviderClass = TestDataProvider.class, groups = {"regression"})
 	public void TC24_GetExistingBookingWithNonExistingBookingID(GetBookingData data)
 	{
 		GetBookingRequest request = new GetBookingRequest(data.getBookingID());
