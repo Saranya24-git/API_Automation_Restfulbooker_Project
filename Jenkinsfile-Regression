@@ -31,9 +31,8 @@ pipeline {
 
         stage('Run API Regression Tests') {
     steps {
-        dir('APIRestfulBooker-Regression') {
             bat 'mvn -B clean test -Pregression'
-        }
+        
     }
 }
     }

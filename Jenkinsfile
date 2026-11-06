@@ -31,9 +31,9 @@ pipeline {
 
         stage('Run API Smoke Tests') {
     steps {
-        dir('APIRestfulBooker-Smoke') {
+       
             bat 'mvn -B clean test -Psmoke'
-        }
+       
     }
 }
     }
