@@ -31,7 +31,7 @@ pipeline {
 
         stage('Run API Smoke Tests') {
     steps {
-        dir('APIAutomationFramework') {
+        dir('APIRestfulBooker-Smoke') {
             bat 'mvn -B clean test -Psmoke'
         }
     }
@@ -40,7 +40,7 @@ pipeline {
 
     post {
     always {
-        junit testResults: 'APIAutomationFramework/target/surefire-reports/TEST-*.xml'
+        junit testResults: 'target/surefire-reports/TEST-*.xml'
     }
 
         success {

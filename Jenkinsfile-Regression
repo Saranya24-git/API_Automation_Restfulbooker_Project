@@ -31,7 +31,7 @@ pipeline {
 
         stage('Run API Regression Tests') {
     steps {
-        dir('APIAutomationFramework') {
+        dir('APIRestfulBooker-Regression') {
             bat 'mvn -B clean test -Pregression'
         }
     }
@@ -40,7 +40,7 @@ pipeline {
 
     post {
     always {
-        junit testResults: 'APIAutomationFramework/target/surefire-reports/TEST-*.xml'
+        junit testResults: 'target/surefire-reports/TEST-*.xml'
     }
 
         success {
