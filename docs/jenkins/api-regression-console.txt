@@ -1,0 +1,541 @@
+Started by user Saranya Manoharan
+Obtained Jenkinsfile-Regression from git https://github.com/Saranya24-git/API_Automation_Restfulbooker_Project.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\ProgramData\Jenkins\.jenkins\workspace\APIRestfulBooker-Regression
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] checkout
+[2026-11-12T08:42:38.948Z] Selected Git installation does not exist. Using Default
+[2026-11-12T08:42:38.948Z] The recommended git tool is: NONE
+[2026-11-12T08:42:38.948Z] No credentials specified
+[2026-11-12T08:42:38.949Z]  > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\APIRestfulBooker-Regression\.git # timeout=10
+[2026-11-12T08:42:39.000Z] Fetching changes from the remote Git repository
+[2026-11-12T08:42:39.003Z]  > git.exe config remote.origin.url https://github.com/Saranya24-git/API_Automation_Restfulbooker_Project.git # timeout=10
+[2026-11-12T08:42:39.051Z] Fetching upstream changes from https://github.com/Saranya24-git/API_Automation_Restfulbooker_Project.git
+[2026-11-12T08:42:39.051Z]  > git.exe --version # timeout=10
+[2026-11-12T08:42:39.091Z]  > git --version # 'git version 2.54.0.windows.1'
+[2026-11-12T08:42:39.091Z]  > git.exe fetch --tags --force --progress -- https://github.com/Saranya24-git/API_Automation_Restfulbooker_Project.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+[2026-11-12T08:42:39.871Z]  > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+[2026-11-12T08:42:39.934Z] Checking out Revision a48480df8dba0799bd56a55cb0660524911bd030 (refs/remotes/origin/main)
+[2026-11-12T08:42:39.934Z]  > git.exe config core.sparsecheckout # timeout=10
+[2026-11-12T08:42:39.995Z]  > git.exe checkout -f a48480df8dba0799bd56a55cb0660524911bd030 # timeout=10
+[2026-11-12T08:42:40.083Z] Commit message: "Update README.md"
+[2026-11-12T08:42:40.084Z]  > git.exe rev-list --no-walk a48480df8dba0799bd56a55cb0660524911bd030 # timeout=10
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Verify Environment)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] bat
+[2026-11-12T08:42:40.744Z] 
+[2026-11-12T08:42:40.744Z] C:\ProgramData\Jenkins\.jenkins\workspace\APIRestfulBooker-Regression>echo JAVA_HOME=C:\Program Files\Java\jdk-17 
+[2026-11-12T08:42:40.744Z] JAVA_HOME=C:\Program Files\Java\jdk-17
+[Pipeline] bat
+[2026-11-12T08:42:41.042Z] 
+[2026-11-12T08:42:41.042Z] C:\ProgramData\Jenkins\.jenkins\workspace\APIRestfulBooker-Regression>java -version 
+[2026-11-12T08:42:41.042Z] java version "17.0.12" 2024-07-16 LTS
+[2026-11-12T08:42:41.042Z] Java(TM) SE Runtime Environment (build 17.0.12+8-LTS-286)
+[2026-11-12T08:42:41.042Z] Java HotSpot(TM) 64-Bit Server VM (build 17.0.12+8-LTS-286, mixed mode, sharing)
+[Pipeline] bat
+[2026-11-12T08:42:41.370Z] 
+[2026-11-12T08:42:41.370Z] C:\ProgramData\Jenkins\.jenkins\workspace\APIRestfulBooker-Regression>mvn -version 
+[2026-11-12T08:42:41.934Z] Apache Maven 3.10.0 (c43a36b8d67be7e0805a411bc0898af1a51f5472)
+[2026-11-12T08:42:41.934Z] Maven home: C:\ProgramData\Jenkins\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Maven3
+[2026-11-12T08:42:41.934Z] Java version: 17.0.12, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk-17
+[2026-11-12T08:42:41.934Z] Default locale: en_IN, platform encoding: Cp1252, time zone: Asia/Calcutta
+[2026-11-12T08:42:41.934Z] OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run API Regression Tests)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] bat
+[2026-11-12T08:42:42.450Z] 
+[2026-11-12T08:42:42.451Z] C:\ProgramData\Jenkins\.jenkins\workspace\APIRestfulBooker-Regression>mvn -B clean test -Pregression 
+[2026-11-12T08:42:44.362Z] [INFO] Scanning for projects...
+[2026-11-12T08:42:44.362Z] [INFO] Loaded 24459 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[2026-11-12T08:42:44.362Z] [INFO] 
+[2026-11-12T08:42:44.362Z] [INFO] -----------------< com.api.testing:APITestingProject >------------------
+[2026-11-12T08:42:44.362Z] [INFO] Building APITestingProject 0.0.1-SNAPSHOT
+[2026-11-12T08:42:44.362Z] [INFO]   from pom.xml
+[2026-11-12T08:42:44.362Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-11-12T08:42:44.362Z] [INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[2026-11-12T08:42:46.288Z] [INFO] 
+[2026-11-12T08:42:46.288Z] [INFO] --- clean:3.4.0:clean (default-clean) @ APITestingProject ---
+[2026-11-12T08:42:46.288Z] [INFO] Deleting C:\ProgramData\Jenkins\.jenkins\workspace\APIRestfulBooker-Regression\target
+[2026-11-12T08:42:46.552Z] [INFO] 
+[2026-11-12T08:42:46.552Z] [INFO] --- resources:3.3.1:resources (default-resources) @ APITestingProject ---
+[2026-11-12T08:42:46.552Z] [INFO] skip non existing resourceDirectory C:\ProgramData\Jenkins\.jenkins\workspace\APIRestfulBooker-Regression\src\main\resources
+[2026-11-12T08:42:46.552Z] [INFO] 
+[2026-11-12T08:42:46.552Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ APITestingProject ---
+[2026-11-12T08:42:46.813Z] [INFO] Recompiling the module because of changed source code.
+[2026-11-12T08:42:46.813Z] [INFO] Compiling 29 source files with javac [debug target 11] to target\classes
+[2026-11-12T08:42:49.361Z] [WARNING] system modules path not set in conjunction with -source 11
+[2026-11-12T08:42:49.361Z] [INFO] 
+[2026-11-12T08:42:49.361Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ APITestingProject ---
+[2026-11-12T08:42:49.361Z] [INFO] Copying 5 resources from src\test\resources to target\test-classes
+[2026-11-12T08:42:49.361Z] [INFO] 
+[2026-11-12T08:42:49.361Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ APITestingProject ---
+[2026-11-12T08:42:49.361Z] [INFO] Recompiling the module because of changed dependency.
+[2026-11-12T08:42:49.361Z] [INFO] Compiling 8 source files with javac [debug target 11] to target\test-classes
+[2026-11-12T08:42:50.734Z] [WARNING] system modules path not set in conjunction with -source 11
+[2026-11-12T08:42:50.734Z] [INFO] 
+[2026-11-12T08:42:50.734Z] [INFO] --- surefire:3.5.6:test (default-test) @ APITestingProject ---
+[2026-11-12T08:42:50.998Z] [INFO] Using auto detected provider org.apache.maven.surefire.testng.TestNGProvider
+[2026-11-12T08:42:50.998Z] [INFO] 
+[2026-11-12T08:42:50.998Z] [INFO] -------------------------------------------------------
+[2026-11-12T08:42:50.998Z] [INFO]  T E S T S
+[2026-11-12T08:42:50.998Z] [INFO] -------------------------------------------------------
+[2026-11-12T08:42:51.569Z] [INFO] Running TestSuite
+[2026-11-12T08:42:53.483Z] 14:12:53.164 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:42:54.013Z] 14:12:53.740 INFO  [main] GetBookingClient - Authenticating the request
+[2026-11-12T08:42:55.925Z] 200
+[2026-11-12T08:42:55.925Z] {
+[2026-11-12T08:42:55.925Z]     "token": "6f0e29d8f6a9e76"
+[2026-11-12T08:42:55.925Z] }
+[2026-11-12T08:42:56.187Z] 14:12:56.082 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:42:56.187Z] 14:12:56.083 INFO  [main] GetBookingClient - Authenticating the request
+[2026-11-12T08:42:57.145Z] 200
+[2026-11-12T08:42:57.145Z] {
+[2026-11-12T08:42:57.145Z]     "reason": "Bad credentials"
+[2026-11-12T08:42:57.145Z] }
+[2026-11-12T08:42:57.145Z] 14:12:56.810 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:42:57.145Z] 14:12:56.811 INFO  [main] GetBookingClient - Authenticating the request
+[2026-11-12T08:42:57.720Z] 200
+[2026-11-12T08:42:57.720Z] {
+[2026-11-12T08:42:57.720Z]     "reason": "Bad credentials"
+[2026-11-12T08:42:57.720Z] }
+[2026-11-12T08:42:57.720Z] 14:12:57.547 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:42:57.720Z] 14:12:57.548 INFO  [main] GetBookingClient - Authenticating the request
+[2026-11-12T08:42:58.295Z] 200
+[2026-11-12T08:42:58.295Z] {
+[2026-11-12T08:42:58.295Z]     "reason": "Bad credentials"
+[2026-11-12T08:42:58.295Z] }
+[2026-11-12T08:42:58.562Z] 14:12:58.239 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:42:58.562Z] 14:12:58.240 INFO  [main] GetBookingClient - Authenticating the request
+[2026-11-12T08:42:59.135Z] 200
+[2026-11-12T08:42:59.135Z] {
+[2026-11-12T08:42:59.135Z]     "reason": "Bad credentials"
+[2026-11-12T08:42:59.135Z] }
+[2026-11-12T08:42:59.135Z] 14:12:58.905 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:42:59.135Z] 14:12:58.906 INFO  [main] GetBookingClient - Authenticating the request
+[2026-11-12T08:42:59.713Z] 200
+[2026-11-12T08:42:59.713Z] {
+[2026-11-12T08:42:59.713Z]     "reason": "Bad credentials"
+[2026-11-12T08:42:59.713Z] }
+[2026-11-12T08:42:59.713Z] 14:12:59.588 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:42:59.713Z] 14:12:59.589 INFO  [main] GetBookingClient - Authenticating the request
+[2026-11-12T08:43:00.288Z] Content-Length=27
+[2026-11-12T08:43:00.288Z] Content-Type=application/json; charset=utf-8
+[2026-11-12T08:43:00.288Z] Date=Thu, 12 Nov 2026 08:43:00 GMT
+[2026-11-12T08:43:00.288Z] Etag=W/"1b-ihMGos6JeluJhQzfDUD85/sZSnY"
+[2026-11-12T08:43:00.288Z] Nel={"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+[2026-11-12T08:43:00.288Z] Report-To={"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=bc91RUe7k8KHXLPDfspiYKOQS0PeIRhNjoBfX3cfwow%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1794472980"}],"max_age":3600}
+[2026-11-12T08:43:00.288Z] Reporting-Endpoints=heroku-nel="https://nel.heroku.com/reports?s=bc91RUe7k8KHXLPDfspiYKOQS0PeIRhNjoBfX3cfwow%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1794472980"
+[2026-11-12T08:43:00.288Z] Server=Heroku
+[2026-11-12T08:43:00.288Z] Via=1.1 heroku-router
+[2026-11-12T08:43:00.288Z] X-Powered-By=Express
+[2026-11-12T08:43:00.550Z] 14:13:00.288 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:00.550Z] 14:13:00.291 INFO  [main] BookingClient - Sending POST /booking request
+[2026-11-12T08:43:00.550Z] Body:
+[2026-11-12T08:43:00.550Z] {
+[2026-11-12T08:43:00.550Z]     "firstname": "Saranya",
+[2026-11-12T08:43:00.550Z]     "lastname": "K",
+[2026-11-12T08:43:00.550Z]     "totalprice": 2500,
+[2026-11-12T08:43:00.550Z]     "depositpaid": true,
+[2026-11-12T08:43:00.550Z]     "bookingdates": {
+[2026-11-12T08:43:00.550Z]         "checkin": [
+[2026-11-12T08:43:00.550Z]             2026,
+[2026-11-12T08:43:00.550Z]             8,
+[2026-11-12T08:43:00.550Z]             1
+[2026-11-12T08:43:00.550Z]         ],
+[2026-11-12T08:43:00.550Z]         "checkout": [
+[2026-11-12T08:43:00.550Z]             2026,
+[2026-11-12T08:43:00.550Z]             8,
+[2026-11-12T08:43:00.550Z]             10
+[2026-11-12T08:43:00.550Z]         ]
+[2026-11-12T08:43:00.550Z]     },
+[2026-11-12T08:43:00.550Z]     "additionalneeds": "Breakfast"
+[2026-11-12T08:43:00.550Z] }
+[2026-11-12T08:43:01.131Z] {
+[2026-11-12T08:43:01.131Z]     "bookingid": 1182,
+[2026-11-12T08:43:01.131Z]     "booking": {
+[2026-11-12T08:43:01.131Z]         "firstname": "Saranya",
+[2026-11-12T08:43:01.131Z]         "lastname": "K",
+[2026-11-12T08:43:01.131Z]         "totalprice": 2500,
+[2026-11-12T08:43:01.131Z]         "depositpaid": true,
+[2026-11-12T08:43:01.131Z]         "bookingdates": {
+[2026-11-12T08:43:01.131Z]             "checkin": "2026-08-01",
+[2026-11-12T08:43:01.131Z]             "checkout": "2026-08-10"
+[2026-11-12T08:43:01.131Z]         },
+[2026-11-12T08:43:01.131Z]         "additionalneeds": "Breakfast"
+[2026-11-12T08:43:01.131Z]     }
+[2026-11-12T08:43:01.131Z] }
+[2026-11-12T08:43:01.131Z] 14:13:01.014 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:01.131Z] 14:13:01.015 INFO  [main] BookingClient - Sending POST /booking request
+[2026-11-12T08:43:01.131Z] Body:
+[2026-11-12T08:43:01.131Z] {
+[2026-11-12T08:43:01.131Z]     "firstname": "Saranya",
+[2026-11-12T08:43:01.131Z]     "lastname": "K",
+[2026-11-12T08:43:01.131Z]     "totalprice": 2500,
+[2026-11-12T08:43:01.131Z]     "depositpaid": true,
+[2026-11-12T08:43:01.131Z]     "bookingdates": {
+[2026-11-12T08:43:01.131Z]         "checkin": [
+[2026-11-12T08:43:01.131Z]             2026,
+[2026-11-12T08:43:01.131Z]             8,
+[2026-11-12T08:43:01.131Z]             1
+[2026-11-12T08:43:01.131Z]         ],
+[2026-11-12T08:43:01.131Z]         "checkout": [
+[2026-11-12T08:43:01.131Z]             2026,
+[2026-11-12T08:43:01.131Z]             8,
+[2026-11-12T08:43:01.131Z]             10
+[2026-11-12T08:43:01.131Z]         ]
+[2026-11-12T08:43:01.131Z]     },
+[2026-11-12T08:43:01.131Z]     "additionalneeds": "Breakfast"
+[2026-11-12T08:43:01.131Z] }
+[2026-11-12T08:43:02.074Z] {
+[2026-11-12T08:43:02.074Z]     "bookingid": 1188,
+[2026-11-12T08:43:02.074Z]     "booking": {
+[2026-11-12T08:43:02.074Z]         "firstname": "Saranya",
+[2026-11-12T08:43:02.074Z]         "lastname": "K",
+[2026-11-12T08:43:02.074Z]         "totalprice": 2500,
+[2026-11-12T08:43:02.074Z]         "depositpaid": true,
+[2026-11-12T08:43:02.074Z]         "bookingdates": {
+[2026-11-12T08:43:02.074Z]             "checkin": "2026-08-01",
+[2026-11-12T08:43:02.074Z]             "checkout": "2026-08-10"
+[2026-11-12T08:43:02.074Z]         },
+[2026-11-12T08:43:02.074Z]         "additionalneeds": "Breakfast"
+[2026-11-12T08:43:02.074Z]     }
+[2026-11-12T08:43:02.074Z] }
+[2026-11-12T08:43:02.074Z] 14:13:01.782 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:02.074Z] 14:13:01.783 INFO  [main] BookingClient - Sending POST /booking request
+[2026-11-12T08:43:02.074Z] Body:
+[2026-11-12T08:43:02.074Z] {
+[2026-11-12T08:43:02.074Z]     "firstname": "Saranya",
+[2026-11-12T08:43:02.074Z]     "lastname": "K",
+[2026-11-12T08:43:02.074Z]     "totalprice": 2500,
+[2026-11-12T08:43:02.074Z]     "depositpaid": true,
+[2026-11-12T08:43:02.074Z]     "bookingdates": {
+[2026-11-12T08:43:02.074Z]         "checkin": [
+[2026-11-12T08:43:02.074Z]             2026,
+[2026-11-12T08:43:02.074Z]             8,
+[2026-11-12T08:43:02.074Z]             1
+[2026-11-12T08:43:02.074Z]         ],
+[2026-11-12T08:43:02.074Z]         "checkout": [
+[2026-11-12T08:43:02.074Z]             2026,
+[2026-11-12T08:43:02.074Z]             8,
+[2026-11-12T08:43:02.074Z]             10
+[2026-11-12T08:43:02.074Z]         ]
+[2026-11-12T08:43:02.074Z]     },
+[2026-11-12T08:43:02.074Z]     "additionalneeds": "Breakfast"
+[2026-11-12T08:43:02.074Z] }
+[2026-11-12T08:43:02.653Z] Content-Length=198
+[2026-11-12T08:43:02.653Z] Content-Type=application/json; charset=utf-8
+[2026-11-12T08:43:02.653Z] Date=Thu, 12 Nov 2026 08:43:02 GMT
+[2026-11-12T08:43:02.653Z] Etag=W/"c6-YGUVad16m7DF/PZfFf92F15mFlA"
+[2026-11-12T08:43:02.653Z] Nel={"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+[2026-11-12T08:43:02.653Z] Report-To={"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=4wuT%2BMjIRlDXCeyCU%2FN8Qfg1YZHKaKu%2Fy%2F0u9J%2F%2BZFw%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1794472982"}],"max_age":3600}
+[2026-11-12T08:43:02.653Z] Reporting-Endpoints=heroku-nel="https://nel.heroku.com/reports?s=4wuT%2BMjIRlDXCeyCU%2FN8Qfg1YZHKaKu%2Fy%2F0u9J%2F%2BZFw%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1794472982"
+[2026-11-12T08:43:02.653Z] Server=Heroku
+[2026-11-12T08:43:02.653Z] Via=1.1 heroku-router
+[2026-11-12T08:43:02.653Z] X-Powered-By=Express
+[2026-11-12T08:43:02.653Z] 14:13:02.483 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:02.653Z] 14:13:02.485 INFO  [main] BookingClient - Sending POST /booking request
+[2026-11-12T08:43:02.653Z] Body:
+[2026-11-12T08:43:02.653Z] {
+[2026-11-12T08:43:02.653Z]     "firstname": "",
+[2026-11-12T08:43:02.653Z]     "lastname": "K",
+[2026-11-12T08:43:02.653Z]     "totalprice": 2500,
+[2026-11-12T08:43:02.653Z]     "depositpaid": true,
+[2026-11-12T08:43:02.653Z]     "bookingdates": {
+[2026-11-12T08:43:02.653Z]         "checkin": [
+[2026-11-12T08:43:02.653Z]             2026,
+[2026-11-12T08:43:02.653Z]             8,
+[2026-11-12T08:43:02.653Z]             1
+[2026-11-12T08:43:02.653Z]         ],
+[2026-11-12T08:43:02.653Z]         "checkout": [
+[2026-11-12T08:43:02.653Z]             2026,
+[2026-11-12T08:43:02.653Z]             8,
+[2026-11-12T08:43:02.653Z]             10
+[2026-11-12T08:43:02.653Z]         ]
+[2026-11-12T08:43:02.653Z]     },
+[2026-11-12T08:43:02.653Z]     "additionalneeds": "Breakfast"
+[2026-11-12T08:43:02.653Z] }
+[2026-11-12T08:43:03.233Z] {
+[2026-11-12T08:43:03.233Z]     "bookingid": 1205,
+[2026-11-12T08:43:03.233Z]     "booking": {
+[2026-11-12T08:43:03.233Z]         "firstname": "",
+[2026-11-12T08:43:03.233Z]         "lastname": "K",
+[2026-11-12T08:43:03.233Z]         "totalprice": 2500,
+[2026-11-12T08:43:03.233Z]         "depositpaid": true,
+[2026-11-12T08:43:03.233Z]         "bookingdates": {
+[2026-11-12T08:43:03.233Z]             "checkin": "2026-08-01",
+[2026-11-12T08:43:03.233Z]             "checkout": "2026-08-10"
+[2026-11-12T08:43:03.233Z]         },
+[2026-11-12T08:43:03.233Z]         "additionalneeds": "Breakfast"
+[2026-11-12T08:43:03.233Z]     }
+[2026-11-12T08:43:03.233Z] }
+[2026-11-12T08:43:03.499Z] 14:13:03.154 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:03.499Z] 14:13:03.155 INFO  [main] BookingClient - Sending POST /booking request
+[2026-11-12T08:43:03.499Z] Body:
+[2026-11-12T08:43:03.499Z] {
+[2026-11-12T08:43:03.499Z]     "firstname": null,
+[2026-11-12T08:43:03.499Z]     "lastname": "K",
+[2026-11-12T08:43:03.499Z]     "totalprice": 2500,
+[2026-11-12T08:43:03.499Z]     "depositpaid": true,
+[2026-11-12T08:43:03.499Z]     "bookingdates": {
+[2026-11-12T08:43:03.499Z]         "checkin": [
+[2026-11-12T08:43:03.499Z]             2026,
+[2026-11-12T08:43:03.499Z]             8,
+[2026-11-12T08:43:03.499Z]             1
+[2026-11-12T08:43:03.499Z]         ],
+[2026-11-12T08:43:03.499Z]         "checkout": [
+[2026-11-12T08:43:03.499Z]             2026,
+[2026-11-12T08:43:03.499Z]             8,
+[2026-11-12T08:43:03.499Z]             10
+[2026-11-12T08:43:03.499Z]         ]
+[2026-11-12T08:43:03.499Z]     },
+[2026-11-12T08:43:03.499Z]     "additionalneeds": "Breakfast"
+[2026-11-12T08:43:03.499Z] }
+[2026-11-12T08:43:04.078Z] 500
+[2026-11-12T08:43:04.078Z] text/plain; charset=utf-8
+[2026-11-12T08:43:04.078Z] Internal Server Error
+[2026-11-12T08:43:04.078Z] 14:13:03.842 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:04.078Z] 14:13:03.843 INFO  [main] BookingClient - Sending POST /booking request
+[2026-11-12T08:43:04.078Z] Body:
+[2026-11-12T08:43:04.078Z] {
+[2026-11-12T08:43:04.078Z]     "firstname": "Saranya",
+[2026-11-12T08:43:04.078Z]     "lastname": "",
+[2026-11-12T08:43:04.078Z]     "totalprice": 2500,
+[2026-11-12T08:43:04.078Z]     "depositpaid": true,
+[2026-11-12T08:43:04.078Z]     "bookingdates": {
+[2026-11-12T08:43:04.078Z]         "checkin": [
+[2026-11-12T08:43:04.078Z]             2026,
+[2026-11-12T08:43:04.078Z]             8,
+[2026-11-12T08:43:04.078Z]             1
+[2026-11-12T08:43:04.078Z]         ],
+[2026-11-12T08:43:04.078Z]         "checkout": [
+[2026-11-12T08:43:04.078Z]             2026,
+[2026-11-12T08:43:04.078Z]             8,
+[2026-11-12T08:43:04.078Z]             10
+[2026-11-12T08:43:04.078Z]         ]
+[2026-11-12T08:43:04.078Z]     },
+[2026-11-12T08:43:04.078Z]     "additionalneeds": "Breakfast"
+[2026-11-12T08:43:04.078Z] }
+[2026-11-12T08:43:04.658Z] {
+[2026-11-12T08:43:04.658Z]     "bookingid": 1219,
+[2026-11-12T08:43:04.658Z]     "booking": {
+[2026-11-12T08:43:04.658Z]         "firstname": "Saranya",
+[2026-11-12T08:43:04.658Z]         "lastname": "",
+[2026-11-12T08:43:04.658Z]         "totalprice": 2500,
+[2026-11-12T08:43:04.658Z]         "depositpaid": true,
+[2026-11-12T08:43:04.658Z]         "bookingdates": {
+[2026-11-12T08:43:04.658Z]             "checkin": "2026-08-01",
+[2026-11-12T08:43:04.658Z]             "checkout": "2026-08-10"
+[2026-11-12T08:43:04.658Z]         },
+[2026-11-12T08:43:04.658Z]         "additionalneeds": "Breakfast"
+[2026-11-12T08:43:04.658Z]     }
+[2026-11-12T08:43:04.658Z] }
+[2026-11-12T08:43:04.658Z] 14:13:04.518 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:04.658Z] 14:13:04.519 INFO  [main] BookingClient - Sending POST /booking request
+[2026-11-12T08:43:04.658Z] Body:
+[2026-11-12T08:43:04.658Z] {
+[2026-11-12T08:43:04.658Z]     "firstname": "Saranya",
+[2026-11-12T08:43:04.658Z]     "lastname": null,
+[2026-11-12T08:43:04.658Z]     "totalprice": 2500,
+[2026-11-12T08:43:04.658Z]     "depositpaid": true,
+[2026-11-12T08:43:04.658Z]     "bookingdates": {
+[2026-11-12T08:43:04.658Z]         "checkin": [
+[2026-11-12T08:43:04.658Z]             2026,
+[2026-11-12T08:43:04.658Z]             8,
+[2026-11-12T08:43:04.658Z]             1
+[2026-11-12T08:43:04.658Z]         ],
+[2026-11-12T08:43:04.658Z]         "checkout": [
+[2026-11-12T08:43:04.658Z]             2026,
+[2026-11-12T08:43:04.658Z]             8,
+[2026-11-12T08:43:04.658Z]             10
+[2026-11-12T08:43:04.658Z]         ]
+[2026-11-12T08:43:04.658Z]     },
+[2026-11-12T08:43:04.658Z]     "additionalneeds": "Breakfast"
+[2026-11-12T08:43:04.658Z] }
+[2026-11-12T08:43:05.236Z] 500
+[2026-11-12T08:43:05.236Z] text/plain; charset=utf-8
+[2026-11-12T08:43:05.236Z] Internal Server Error
+[2026-11-12T08:43:05.497Z] 14:13:05.182 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:06.072Z] {
+[2026-11-12T08:43:06.072Z]     "bookingid": 1235,
+[2026-11-12T08:43:06.072Z]     "booking": {
+[2026-11-12T08:43:06.072Z]         "firstname": "Saranya",
+[2026-11-12T08:43:06.072Z]         "lastname": "K",
+[2026-11-12T08:43:06.072Z]         "totalprice": 2500,
+[2026-11-12T08:43:06.072Z]         "depositpaid": true,
+[2026-11-12T08:43:06.072Z]         "bookingdates": {
+[2026-11-12T08:43:06.072Z]             "checkin": "0NaN-aN-aN",
+[2026-11-12T08:43:06.072Z]             "checkout": "0NaN-aN-aN"
+[2026-11-12T08:43:06.072Z]         },
+[2026-11-12T08:43:06.072Z]         "additionalneeds": "Breakfast"
+[2026-11-12T08:43:06.072Z]     }
+[2026-11-12T08:43:06.072Z] }
+[2026-11-12T08:43:06.072Z] 14:13:05.856 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:06.072Z] 14:13:05.857 INFO  [main] BookingClient - Sending POST /booking request
+[2026-11-12T08:43:06.072Z] Body:
+[2026-11-12T08:43:06.072Z] {
+[2026-11-12T08:43:06.072Z]     "firstname": "Saranya",
+[2026-11-12T08:43:06.072Z]     "lastname": "K",
+[2026-11-12T08:43:06.072Z]     "totalprice": 2500,
+[2026-11-12T08:43:06.072Z]     "depositpaid": true,
+[2026-11-12T08:43:06.072Z]     "bookingdates": null,
+[2026-11-12T08:43:06.072Z]     "additionalneeds": "Breakfast"
+[2026-11-12T08:43:06.072Z] }
+[2026-11-12T08:43:06.649Z] 500
+[2026-11-12T08:43:06.649Z] text/plain; charset=utf-8
+[2026-11-12T08:43:06.649Z] Internal Server Error
+[2026-11-12T08:43:06.649Z] 14:13:06.521 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:07.221Z] 500
+[2026-11-12T08:43:07.221Z] text/plain; charset=utf-8
+[2026-11-12T08:43:07.221Z] Internal Server Error
+[2026-11-12T08:43:07.221Z] 14:13:07.181 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:08.159Z] 500
+[2026-11-12T08:43:08.159Z] text/plain; charset=utf-8
+[2026-11-12T08:43:08.159Z] Internal Server Error
+[2026-11-12T08:43:08.159Z] 14:13:07.831 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:08.723Z] 200
+[2026-11-12T08:43:08.723Z] application/json; charset=utf-8
+[2026-11-12T08:43:08.723Z] {
+[2026-11-12T08:43:08.723Z]     "bookingid": 1267,
+[2026-11-12T08:43:08.723Z]     "booking": {
+[2026-11-12T08:43:08.723Z]         "firstname": "Saranya",
+[2026-11-12T08:43:08.723Z]         "lastname": "K",
+[2026-11-12T08:43:08.723Z]         "totalprice": null,
+[2026-11-12T08:43:08.723Z]         "depositpaid": true,
+[2026-11-12T08:43:08.723Z]         "bookingdates": {
+[2026-11-12T08:43:08.723Z]             "checkin": "2026-08-01",
+[2026-11-12T08:43:08.723Z]             "checkout": "2026-08-10"
+[2026-11-12T08:43:08.723Z]         },
+[2026-11-12T08:43:08.723Z]         "additionalneeds": "Breakfast"
+[2026-11-12T08:43:08.723Z]     }
+[2026-11-12T08:43:08.723Z] }
+[2026-11-12T08:43:08.723Z] 14:13:08.483 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:09.297Z] 400
+[2026-11-12T08:43:09.297Z] text/plain; charset=utf-8
+[2026-11-12T08:43:09.297Z] Bad Request
+[2026-11-12T08:43:09.297Z] 14:13:09.153 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:09.297Z] 14:13:09.156 INFO  [main] GetBookingClient - Sending GET /booking/158
+[2026-11-12T08:43:09.856Z] {
+[2026-11-12T08:43:09.856Z]     "firstname": "Josh",
+[2026-11-12T08:43:09.856Z]     "lastname": "Allen",
+[2026-11-12T08:43:09.856Z]     "totalprice": 111,
+[2026-11-12T08:43:09.856Z]     "depositpaid": true,
+[2026-11-12T08:43:09.856Z]     "bookingdates": {
+[2026-11-12T08:43:09.856Z]         "checkin": "2018-01-01",
+[2026-11-12T08:43:09.856Z]         "checkout": "2019-01-01"
+[2026-11-12T08:43:09.856Z]     },
+[2026-11-12T08:43:09.856Z]     "additionalneeds": "super bowls"
+[2026-11-12T08:43:09.856Z] }
+[2026-11-12T08:43:10.124Z] 14:13:09.834 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:10.124Z] 14:13:09.834 INFO  [main] GetBookingClient - Sending GET /booking/asdf
+[2026-11-12T08:43:10.697Z] Not Found
+[2026-11-12T08:43:10.697Z] 14:13:10.512 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:10.697Z] 14:13:10.513 INFO  [main] GetBookingClient - Sending GET /booking/999999
+[2026-11-12T08:43:11.273Z] Not Found
+[2026-11-12T08:43:11.273Z] 14:13:11.201 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:11.273Z] 14:13:11.201 INFO  [main] GetBookingClient - Authenticating the request
+[2026-11-12T08:43:12.205Z] 14:13:11.857 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:12.205Z] 14:13:11.857 INFO  [main] GetBookingClient - Sending GET /booking/571
+[2026-11-12T08:43:12.786Z] 14:13:12.517 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:12.786Z] 14:13:12.518 INFO  [main] UpdateBookingClient - Updating booking ID: 571
+[2026-11-12T08:43:13.361Z] {
+[2026-11-12T08:43:13.361Z]     "firstname": "test",
+[2026-11-12T08:43:13.361Z]     "lastname": "Allen",
+[2026-11-12T08:43:13.361Z]     "totalprice": 3000,
+[2026-11-12T08:43:13.361Z]     "depositpaid": true,
+[2026-11-12T08:43:13.361Z]     "bookingdates": {
+[2026-11-12T08:43:13.361Z]         "checkin": "2018-01-01",
+[2026-11-12T08:43:13.361Z]         "checkout": "2026-08-25"
+[2026-11-12T08:43:13.361Z]     },
+[2026-11-12T08:43:13.361Z]     "additionalneeds": "Dinner"
+[2026-11-12T08:43:13.361Z] }
+[2026-11-12T08:43:13.361Z] 14:13:13.201 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:13.362Z] 14:13:13.202 INFO  [main] GetBookingClient - Sending GET /booking/571
+[2026-11-12T08:43:13.936Z] 14:13:13.852 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:13.936Z] 14:13:13.855 INFO  [main] UpdateBookingClient - Updating booking ID: 571
+[2026-11-12T08:43:14.515Z] Status Code : 403
+[2026-11-12T08:43:14.515Z] Response Body: Forbidden
+[2026-11-12T08:43:14.780Z] 14:13:14.550 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:14.780Z] 14:13:14.551 INFO  [main] GetBookingClient - Sending GET /booking/571
+[2026-11-12T08:43:15.358Z] 14:13:15.205 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:15.358Z] 14:13:15.207 INFO  [main] UpdateBookingClient - Updating booking ID: 571
+[2026-11-12T08:43:15.933Z] Status Code : 403
+[2026-11-12T08:43:15.933Z] Response Body: Forbidden
+[2026-11-12T08:43:16.199Z] 14:13:15.872 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:16.199Z] 14:13:15.872 INFO  [main] GetBookingClient - Authenticating the request
+[2026-11-12T08:43:16.768Z] 14:13:16.538 INFO  [main] APIConfig - Creating JSON ObjectMapper
+[2026-11-12T08:43:16.768Z] 14:13:16.539 INFO  [main] UpdateBookingClient - Updating booking ID: lkaf23
+[2026-11-12T08:43:17.344Z] Method Not Allowed
+[2026-11-12T08:43:17.922Z] [INFO] Tests run: 27, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.32 s -- in TestSuite
+[2026-11-12T08:43:17.922Z] [INFO] 
+[2026-11-12T08:43:17.922Z] [INFO] Results:
+[2026-11-12T08:43:17.922Z] [INFO] 
+[2026-11-12T08:43:17.922Z] [INFO] Tests run: 27, Failures: 0, Errors: 0, Skipped: 0
+[2026-11-12T08:43:17.922Z] [INFO] 
+[2026-11-12T08:43:17.922Z] [INFO] ------------------------------------------------------------------------
+[2026-11-12T08:43:17.922Z] [INFO] BUILD SUCCESS
+[2026-11-12T08:43:17.922Z] [INFO] ------------------------------------------------------------------------
+[2026-11-12T08:43:17.922Z] [INFO] Total time:  33.951 s
+[2026-11-12T08:43:17.922Z] [INFO] Finished at: 2026-11-12T14:13:17+05:30
+[2026-11-12T08:43:17.922Z] [INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] junit
+[2026-11-12T08:43:18.377Z] Recording test results
+[2026-11-12T08:43:18.399Z] [Checks API] No suitable checks publisher found.
+[Pipeline] echo
+[2026-11-12T08:43:18.423Z] API Regression Tests completed successfully!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

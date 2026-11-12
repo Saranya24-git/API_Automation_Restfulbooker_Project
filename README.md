@@ -37,3 +37,14 @@ GitHub Repository → Jenkins SCM Checkout → Maven Build → TestNG Group Sele
 
 ### Complete Console Output
 [View API Smoke Jenkins Console Log](docs/jenkins/api-smoke-console.txt)
+
+## Jenkins API Regression Execution Evidence
+
+### Pipeline Execution
+![API Regression Pipeline](docs/jenkins/api-regression-pipeline.png)
+
+### Test Execution Results
+![API Regression Test Results](docs/jenkins/api-regression-test-results.png)
+
+### Complete Console Output
+[View API Regression Jenkins Console Log](docs/jenkins/api-regression-console.txt)
