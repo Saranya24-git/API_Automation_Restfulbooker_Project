@@ -27,6 +27,13 @@ GitHub Repository → Jenkins SCM Checkout → Maven Build → TestNG Group Sele
 - `Jenkinsfile` – API Smoke pipeline.
 - `Jenkinsfile-regression` – API Regression pipeline.
 
-### Execution Evidence
+## Jenkins API Smoke Execution Evidence
 
-See the `docs/jenkins/` folder for screenshots of the Jenkins jobs and build results.
+### Pipeline Execution
+![API Smoke Pipeline](docs/jenkins/api-smoke-pipeline.png)
+
+### Test Execution Results
+![API Smoke Test Results](docs/jenkins/api-smoke-test-results.png)
+
+### Complete Console Output
+[View API Smoke Jenkins Console Log](docs/jenkins/api-smoke-console.txt)
